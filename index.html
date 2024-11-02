@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunrise Animation</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background: linear-gradient(#001f3f, #87CEEB); /* Night to day gradient */
+            animation: changeBackground 10s infinite alternate; /* Background color transition */
+        }
+
+        @keyframes changeBackground {
+            0% {
+                background: #001f3f; /* Night color */
+            }
+            100% {
+                background: #87CEEB; /* Day color */
+            }
+        }
+
+        .sun {
+            position: absolute;
+            bottom: -100px; /* Start below the horizon */
+            left: 50%;
+            width: 100px;
+            height: 100px;
+            background: yellow;
+            border-radius: 50%;
+            box-shadow: 0 0 30px rgba(255, 255, 0, 0.7);
+            animation: rise 10s linear forwards; /* Rise animation */
+        }
+
+        @keyframes rise {
+            0% {
+                bottom: -100px; /* Start off screen */
+            }
+            100% {
+                bottom: 100px; /* Final position above the horizon */
+            }
+        }
+
+        .cloud {
+            position: absolute;
+            width: 150px;
+            height: 80px;
+            background: white;
+            border-radius: 50%;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.5);
+            animation: drift 15s linear infinite;
+        }
+
+        .cloud:before,
+        .cloud:after {
+            content: '';
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+        }
+
+        .cloud:before {
+            width: 80px;
+            height: 80px;
+            left: -40px;
+            top: 0;
+        }
+
+        .cloud:after {
+            width: 80px;
+            height: 80px;
+            right: -40px;
+            top: 0;
+        }
+
+        @keyframes drift {
+            0% {
+                transform: translateX(-100%); /* Start off screen */
+            }
+            100% {
+                transform: translateX(100%); /* Move across the screen */
+            }
+        }
+
+        .cloud:nth-child(3) {
+            top: 50px;
+            animation-delay: 2s;
+        }
+
+        .cloud:nth-child(4) {
+            top: 100px;
+            animation-delay: 5s;
+        }
+    </style>
+</head>
+<body>
+    <div class="sun"></div>
+    <div class="cloud"></div>
+    <div class="cloud"></div>
+    <div class="cloud"></div>
+    <div class="cloud"></div>
+</body>
+</html>
